@@ -28,13 +28,6 @@ function turtleDigging()
     turtle.digUp()
     turtle.up()
 
-    turtle.digUp()
-    turtle.turnLeft()
-    turtle.turnLeft()
-    turtle.up()
-    turtle.digUp()
-    turtle.up()
-
     for i = 1, 4 do
         turtle.digUp()
         turtle.dig()
