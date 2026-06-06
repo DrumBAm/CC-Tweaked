@@ -1,70 +1,73 @@
 function turtleDigging()
-    for i = 1, 6 do
-        turtle.up()
-        turtle.dig()
-    end
-    for i = 1, 3 do
-        turtle.turnRight()
-        turtle.forward()
-        turtle.turnLeft()
-        turtle.dig()
-    end
-    turtle.down()
     turtle.dig()
-    turtle.turnRight()
-    turtle.forward()
-    turtle.turnLeft()
-    for i = 1, 6 do
-        turtle.dig()
-        if i ~= 6 then
-            turtle.down()
-        end
-    end
-    for i = 1, 3 do
-        turtle.turnLeft()
-        turtle.forward()
-        turtle.turnRight()
-        turtle.dig()
-    end
-    for i = 1, 4 do
-        turtle.up()
-        turtle.dig()
-    end
-    for i = 1, 2 do
-        turtle.turnRight()
-        turtle.forward()
-        turtle.turnLeft()
-        turtle.dig()
-    end
-    for i = 1, 3 do
-        turtle.dig()
-        if i ~= 3 then
-            turtle.down()
-        end
-    end
-    turtle.turnLeft()
     turtle.forward()
     turtle.turnRight()
-    turtle.dig()
-    for i = 1, 2 do
-        turtle.up()
-        turtle.dig()
-    end
     for i = 1, 4 do
+        turtle.digUp()
+        turtle.dig()
+        turtle.forward()
+    end
+
+    tutle.digUp()
+    turtle.turnLeft()
+    turtle.turnLeft()
+    turtle.up()
+    tutle.digUp()
+    turtle.up()
+
+    for i = 1, 4 do
+        turtle.digUp()
+        turtle.dig()
+        turtle.forward()
+    end
+
+    tutle.digUp()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.up()
+    tutle.digUp()
+    turtle.up()
+
+    tutle.digUp()
+    turtle.turnLeft()
+    turtle.turnLeft()
+    turtle.up()
+    tutle.digUp()
+    turtle.up()
+
+    for i = 1, 4 do
+        turtle.digUp()
+        turtle.dig()
+        turtle.forward()
+    end
+
+    turtle.turnRight()
+    turtle.turnRight()
+    for i = 1, 3 do
+        turtle.forward()
+        turtle.digUp()
+    end
+
+    for i = 1, 6 do
         turtle.down()
     end
-    turtle.turnLeft()
-    turtle.forward()
     turtle.forward()
     turtle.turnRight()
 end
 
 turtle.select(1)
-turtle.equipLeft()
+if turtle.getEquippedLeft() == nil then
+    turtle.equipLeft()
+end
 turtle.select(2)
-turtle.equipRight()
-turtle.select(3)
-turtle.refuel(64)
+if turtle.getEquippedRight() == nil then
+    turtle.equipRight()
+end
+if turtle.getFuelLevel() == 0 then
+    print("No fuel, refueling...")
+    turtle.select(3)
+    turtle.refuel(64)
+end
 turtle.select(1)
 local modem = peripheral.find("modem", rednet.open)
 local id, message, protocol = rednet.receive()
