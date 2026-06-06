@@ -1,33 +1,57 @@
-function turtleDigging()
-    turtle.dig()
-    turtle.forward()
+function detectAndPlaceDown()
     if not turtle.detectDown() then
         turtle.select(4)
         turtle.placeDown()
     end
+end
+
+function detectAndPlaceForward()
+    if not turtle.detect() then
+        turtle.select(4)
+        turtle.place()
+    end
+end
+
+function detectAndPlaceUp()
+    if not turtle.detectUp() then
+        turtle.select(4)
+        turtle.placeUp()
+    end
+end
+
+function turtleDigging()
+    turtle.dig()
+    turtle.forward()
+    detectAndPlaceDown()
     turtle.turnRight()
     for i = 1, 6 do
         for i = 1, 4 do
             turtle.dig()
             turtle.forward()
+            detectAndPlaceDown()
         end
         if i == 6 then
             break
         end
         turtle.digUp()
-        turtle.turnRight()
-        turtle.turnRight()
+        detectAndPlaceForward()
         turtle.up()
+        detectAndPlaceForward()
+        turtle.turnRight()
+        turtle.turnRight()
     end
 
     turtle.turnRight()
     turtle.turnRight()
+    detectAndPlaceUp()
     turtle.forward()
     turtle.digUp()
     turtle.up()
+    detectAndPlaceUp()
     for i = 1, 2 do
         turtle.dig()
         turtle.forward()
+        detectAndPlaceUp()
     end
 
     for i = 1, 7 do
