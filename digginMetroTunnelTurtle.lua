@@ -14,17 +14,10 @@ function turtleDigging()
         if i == 6 then
             break
         end
-        if i % 2 == 0 then
-            turtle.digUp()
-            turtle.turnLeft()
-            turtle.turnLeft()
-            turtle.up()
-        else
-            turtle.digUp()
-            turtle.turnRight()
-            turtle.turnRight()
-            turtle.up()
-        end
+        turtle.digUp()
+        turtle.turnRight()
+        turtle.turnRight()
+        turtle.up()
     end
 
     turtle.turnRight()
@@ -41,8 +34,8 @@ function turtleDigging()
         turtle.down()
     end
 
-    turtle.turnLeft()
-    turtle.turnLeft()
+    turtle.turnRight()
+    turtle.turnRight()
     for i = 1, 3 do
         turtle.forward()
     end
