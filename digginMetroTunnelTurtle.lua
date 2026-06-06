@@ -1,7 +1,7 @@
 function turtleDigging()
     turtle.dig()
     turtle.forward()
-    if ~turtle.detectDown() then
+    if not turtle.detectDown() then
         turtle.select(4)
         turtle.placeDown()
     end
