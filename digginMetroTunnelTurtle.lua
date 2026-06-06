@@ -62,7 +62,7 @@ function turtleDigging()
 
     turtle.turnRight()
     turtle.turnRight()
-    for i = 1, 3 do
+    for i = 1, 4 do
         turtle.forward()
     end
     turtle.turnRight()
