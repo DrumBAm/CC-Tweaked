@@ -1,30 +1,62 @@
 function turtleDigging()
+    for i = 1, 6 do
+        turtle.up()
+        turtle.dig()
+    end
+    for i = 1, 3 do
+        turtle.turnRight()
+        turtle.forward()
+        turtle.turnLeft()
+        turtle.dig()
+    end
+    turtle.down()
+    turtle.dig()
+    turtle.turnRight()
+    turtle.forward()
+    turtle.turnLeft()
+    for i = 1, 6 do
+        turtle.dig()
+        if i ~= 6 then
+            turtle.down()
+        end
+    end
+    for i = 1, 3 do
+        turtle.turnLeft()
+        turtle.forward()
+        turtle.turnRight()
+        turtle.dig()
+    end
+    for i = 1, 4 do
+        turtle.up()
+        turtle.dig()
+    end
+    for i = 1, 2 do
+        turtle.turnRight()
+        turtle.forward()
+        turtle.turnLeft()
+        turtle.dig()
+    end
     for i = 1, 3 do
         turtle.dig()
-        turtle.forward()
-        turtle.dig()
-        turtle.forward()
-        turtle.dig()
-        turtle.forward()
-        turtle.dig()
-        turtle.forward()
-        turtle.turnLeft()
-        turtle.turnLeft()
-        turtle.digUp()
-        turtle.up()
-        turtle.dig()
-        turtle.forward()
-        turtle.dig()
-        turtle.forward()
-        turtle.dig()
-        turtle.forward()
-        turtle.dig()
-        turtle.forward()
-        turtle.turnRight()
-        turtle.turnRight()
-        turtle.digUp()
-        turtle.up()
+        if i ~= 3 then
+            turtle.down()
+        end
     end
+    turtle.turnLeft()
+    turtle.forward()
+    turtle.turnRight()
+    turtle.dig()
+    for i = 1, 2 do
+        turtle.up()
+        turtle.dig()
+    end
+    for i = 1, 4 do
+        turtle.down()
+    end
+    turtle.turnLeft()
+    turtle.forward()
+    turtle.forward()
+    turtle.turnRight()
 end
 
 turtle.select(1)
@@ -46,30 +78,6 @@ local id, message, protocol = rednet.receive()
 message = tonumber(message)
 if message ~= 0 then
     for i = 1, message do
-        turtle.dig()
-        turtle.forward()
-        turtle.turnRight()
-        turtleDigging()
-        turtle.turnRight()
-        turtle.turnRight()
-        turtle.forward()
-        turtle.digUp()
-        turtle.up()
-        turtle.dig()
-        turtle.forward()
-        turtle.dig()
-        turtle.forward()
-        turtle.turnLeft()
-        turtle.turnLeft()
-        turtle.down()
-        turtle.down()
-        turtle.down()
-        turtle.down()
-        turtle.down()
-        turtle.down()
-        turtle.forward()
-        turtle.forward()
-        turtle.forward()
-        turtle.turnRight()
+
     end
 end
