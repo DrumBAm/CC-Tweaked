@@ -35,11 +35,11 @@ function turtleDigging()
                 detectAndPlaceDown()
             end
         end
+        detectAndPlaceForward()
         if i == 6 then
             break
         end
         turtle.digUp()
-        detectAndPlaceForward()
         turtle.up()
         detectAndPlaceForward()
         turtle.turnRight()
