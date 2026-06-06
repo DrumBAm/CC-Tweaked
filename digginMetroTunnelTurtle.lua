@@ -56,6 +56,8 @@ function turtleDigging()
         detectAndPlaceUp()
     end
 
+    detectAndPlaceForward()
+
     for i = 1, 7 do
         turtle.down()
     end
