@@ -1,6 +1,6 @@
 function detectAndPlaceDown()
     if not turtle.detectDown() then
-        turtle.select(4)
+        turtle.select(5)
         turtle.placeDown()
     end
 end
@@ -28,7 +28,9 @@ function turtleDigging()
         for i = 1, 4 do
             turtle.dig()
             turtle.forward()
-            detectAndPlaceDown()
+            if i == 1 then
+                detectAndPlaceDown()
+            end
         end
         if i == 6 then
             break
