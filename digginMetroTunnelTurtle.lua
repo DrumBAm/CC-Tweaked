@@ -38,17 +38,7 @@ function turtleDigging()
     turtle.turnLeft()
     turtle.turnLeft()
     turtle.up()
-    turtle.digUp()
-    turtle.up()
 
-    for i = 1, 4 do
-        turtle.digUp()
-        turtle.dig()
-        turtle.forward()
-    end
-
-    turtle.turnLeft()
-    turtle.turnLeft()
     for i = 1, 3 do
         turtle.forward()
         turtle.digUp()
