@@ -78,6 +78,6 @@ local id, message, protocol = rednet.receive()
 message = tonumber(message)
 if message ~= 0 then
     for i = 1, message do
-
+        turtleDigging()
     end
 end
