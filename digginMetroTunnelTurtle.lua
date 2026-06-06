@@ -23,6 +23,9 @@ function turtleDigging()
     turtle.dig()
     turtle.forward()
     detectAndPlaceDown()
+    turtle.turnLeft()
+    detectAndPlaceForward()
+    turtle.turnRight()
     turtle.turnRight()
     for i = 1, 6 do
         for j = 1, 4 do
@@ -64,7 +67,7 @@ function turtleDigging()
 
     turtle.turnRight()
     turtle.turnRight()
-    for i = 1, 4 do
+    for i = 1, 3 do
         turtle.forward()
     end
     turtle.turnRight()
