@@ -8,11 +8,11 @@ function turtleDigging()
         turtle.forward()
     end
 
-    tutle.digUp()
+    turtle.digUp()
     turtle.turnLeft()
     turtle.turnLeft()
     turtle.up()
-    tutle.digUp()
+    turtle.digUp()
     turtle.up()
 
     for i = 1, 4 do
@@ -21,18 +21,18 @@ function turtleDigging()
         turtle.forward()
     end
 
-    tutle.digUp()
+    turtle.digUp()
     turtle.turnRight()
     turtle.turnRight()
     turtle.up()
-    tutle.digUp()
+    turtle.digUp()
     turtle.up()
 
-    tutle.digUp()
+    turtle.digUp()
     turtle.turnLeft()
     turtle.turnLeft()
     turtle.up()
-    tutle.digUp()
+    turtle.digUp()
     turtle.up()
 
     for i = 1, 4 do
