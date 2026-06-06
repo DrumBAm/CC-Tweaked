@@ -46,6 +46,7 @@ function turtleDigging()
         turtle.turnRight()
     end
 
+    detectAndPlaceForward()
     turtle.turnRight()
     turtle.turnRight()
     detectAndPlaceUp()
