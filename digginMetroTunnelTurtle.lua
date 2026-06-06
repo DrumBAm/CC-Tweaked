@@ -6,48 +6,46 @@ function turtleDigging()
         turtle.placeDown()
     end
     turtle.turnRight()
-    for i = 1, 4 do
-        turtle.dig()
-        turtle.forward()
+    for i = 1, 6 do
+        for i = 1, 4 do
+            turtle.dig()
+            turtle.forward()
+        end
+        if i == 6 then
+            break
+        end
+        if i % 2 == 0 then
+            turtle.digUp()
+            turtle.turnLeft()
+            turtle.turnLeft()
+            turtle.up()
+        else
+            turtle.digUp()
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.up()
+        end
     end
 
-    turtle.digUp()
-    turtle.turnLeft()
-    turtle.turnLeft()
-    turtle.up()
-
-    for i = 1, 4 do
-        turtle.dig()
-        turtle.forward()
-    end
-
-    turtle.digUp()
     turtle.turnRight()
     turtle.turnRight()
+    turtle.forward()
+    turtle.digUp()
     turtle.up()
-
-    for i = 1, 4 do
+    for i = 1, 2 do
         turtle.dig()
         turtle.forward()
     end
-
-    turtle.digUp()
-    turtle.turnLeft()
-    turtle.turnLeft()
-    turtle.up()
-
-    turtle.forward()
-    turtle.digUp()
-    turtle.up()
-    turtle.dig()
-    turtle.forward()
-    turtle.dig()
-    turtle.forward()
 
     for i = 1, 7 do
         turtle.down()
     end
-    turtle.forward()
+
+    turtle.turnLeft()
+    turtle.turnLeft()
+    for i = 1, 3 do
+        turtle.forward()
+    end
     turtle.turnRight()
 end
 
