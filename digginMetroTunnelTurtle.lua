@@ -1,35 +1,12 @@
 function turtleDigging()
     turtle.dig()
     turtle.forward()
-    turtle.turnRight()
-    for i = 1, 4 do
-        turtle.digUp()
-        turtle.dig()
-        turtle.forward()
+    if ~turtle.detectDown() then
+        turtle.select(4)
+        turtle.placeDown()
     end
-
-    turtle.digUp()
-    turtle.turnLeft()
-    turtle.turnLeft()
-    turtle.up()
-    turtle.digUp()
-    turtle.up()
-
-    for i = 1, 4 do
-        turtle.digUp()
-        turtle.dig()
-        turtle.forward()
-    end
-
-    turtle.digUp()
     turtle.turnRight()
-    turtle.turnRight()
-    turtle.up()
-    turtle.digUp()
-    turtle.up()
-
     for i = 1, 4 do
-        turtle.digUp()
         turtle.dig()
         turtle.forward()
     end
@@ -39,12 +16,35 @@ function turtleDigging()
     turtle.turnLeft()
     turtle.up()
 
-    for i = 1, 3 do
+    for i = 1, 4 do
+        turtle.dig()
         turtle.forward()
-        turtle.digUp()
     end
 
-    for i = 1, 6 do
+    turtle.digUp()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.up()
+
+    for i = 1, 4 do
+        turtle.dig()
+        turtle.forward()
+    end
+
+    turtle.digUp()
+    turtle.turnLeft()
+    turtle.turnLeft()
+    turtle.up()
+
+    turtle.forward()
+    turtle.digUp()
+    turtle.up()
+    turtle.dig()
+    turtle.forward()
+    turtle.dig()
+    turtle.forward()
+
+    for i = 1, 7 do
         turtle.down()
     end
     turtle.forward()
