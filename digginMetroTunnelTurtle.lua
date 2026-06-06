@@ -25,7 +25,7 @@ function turtleDigging()
     detectAndPlaceDown()
     turtle.turnRight()
     for i = 1, 6 do
-        for i = 1, 4 do
+        for j = 1, 4 do
             turtle.dig()
             turtle.forward()
             if i == 1 then
