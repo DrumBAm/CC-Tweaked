@@ -72,6 +72,17 @@ function turtleDigging()
         turtle.forward()
     end
     turtle.turnRight()
+
+    tunnelCounter = tunnelCounter + 1
+    if tunnelCounter == 2 then
+        tunnelCounter = 0
+        turtle.select(6)
+        turtle.turnRight()
+        turtle.turnRight()
+        turtle.place()
+        turtle.turnRight()
+        turtle.turnRight()
+    end
 end
 
 turtle.select(1)
@@ -87,6 +98,9 @@ if turtle.getFuelLevel() == 0 then
     turtle.select(3)
     turtle.refuel(64)
 end
+local tunnelCounter = 0
+local tunnelLength = 0
+
 turtle.select(1)
 local modem = peripheral.find("modem", rednet.open)
 local id, message, protocol = rednet.receive()
@@ -95,11 +109,10 @@ if message == "tunnel" then
     rednet.send(1, "For how long?")
 end
 
-message = 0;
-local id, message, protocol = rednet.receive()
-message = tonumber(message)
-if message ~= 0 then
-    for i = 1, message do
+local id, tunnelLength, protocol = rednet.receive()
+tunnelLength = tonumber(tunnelLength)
+if tunnelLength ~= 0 then
+    for i = 1, tunnelLength do
         turtleDigging()
     end
 end
