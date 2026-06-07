@@ -5,6 +5,10 @@ local xFinal = 0
 local yFinal = 0
 local zFinal = 0
 local modem = peripheral.find("modem", rednet.open)
+if modem == nil then
+    print("No modem found")
+    return
+end
 print("Do you want to start digging?(y/n)")
 local input = read()
 if input == "y" then

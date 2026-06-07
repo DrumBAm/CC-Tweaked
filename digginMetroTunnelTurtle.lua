@@ -153,7 +153,7 @@ end
 turtle.select(1)
 
 local modem = peripheral.find("modem", rednet.open)
-if not modem then
+if modem == nil then
     print("No modem found")
     return
 end
