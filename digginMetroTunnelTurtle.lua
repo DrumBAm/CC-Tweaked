@@ -47,6 +47,13 @@ function turtleDigging()
             turtle.forward()
             if i == 1 then
                 detectAndPlaceDown()
+                if j == 4 and tunnelCounter == 1 then
+                    tunnelCounter = 0
+                    turtle.select(6)
+                    turtle.turnRight()
+                    turtle.place()
+                    turtle.turnLeft()
+                end
             end
         end
         detectAndPlaceForward()
@@ -88,7 +95,7 @@ function turtleDigging()
     turtle.turnRight()
 
     tunnelCounter = tunnelCounter + 1
-    if tunnelCounter == 2 then
+    if tunnelCounter == 1 then
         tunnelCounter = 0
         turtle.select(6)
         turtle.turnRight()
