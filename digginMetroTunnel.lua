@@ -1,22 +1,29 @@
+local x = 0
+local y = 0
+local z = 0
+local xFinal = 0
+local yFinal = 0
+local zFinal = 0
 local modem = peripheral.find("modem", rednet.open)
 print("Do you want to start digging?(y/n)")
 local input = read()
 if input == "y" then
     rednet.send(2, "tunnel")
 else
-    exit()
+    return
 end
 
 print("Put X coordinate of the turtle")
-rednet.send(2, read())
+x = toNumber(read())
 print("Put Y coordinate of the turtle")
-rednet.send(2, read())
+y = toNumber(read())
 print("Put Z coordinate of the turtle")
-rednet.send(2, read())
+z = toNumber(read())
 
 print("Put X coordinate of the final destination")
-rednet.send(2, read())
+xFinal = toNumber(read())
 print("Put Y coordinate of the final destination")
-rednet.send(2, read())
+yFinal = toNumber(read())
 print("Put Z coordinate of the final destination")
-rednet.send(2, read())
+zFinal = toNumber(read())
+rednet.send(2, { x, y, z, xFinal, yFinal, zFinal })

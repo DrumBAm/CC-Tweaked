@@ -4,7 +4,6 @@ local message = nil
 local x = 0
 local y = 0
 local z = 0
-local _ = nil
 local xFinal = 0
 local yFinal = 0
 local zFinal = 0
@@ -32,11 +31,10 @@ end
 function turnAround()
     turnRight()
     turnRight()
-    direction = ((direction + 1) % 4) + 1
 end
 
 function moveForward()
-    moveForward()
+    turtle.forward()
     changeCoordinates()
 end
 
@@ -81,11 +79,6 @@ function changeCoordinates()
     elseif direction == 4 then
         z = z - 1
     end
-end
-
-function moveForward()
-    turtle.forward()
-    changeCoordinates()
 end
 
 function turtleDigging()
@@ -151,29 +144,31 @@ turtle.select(2)
 if turtle.getEquippedRight() == nil then
     turtle.equipRight()
 end
-if turtle.getFuelLevel() == 0 then
+if turtle.getFuelLevel() < 100 then
     print("No fuel, refueling...")
     turtle.select(3)
     turtle.refuel(64)
 end
 
 turtle.select(1)
+
 local modem = peripheral.find("modem", rednet.open)
-id, message, protocol = rednet.receive()
-if message == "tunnel" then
-    id, message, protocol = rednet.receive()
-    x = tonumber(message)
-    id, message, protocol = rednet.receive()
-    y = tonumber(message)
-    id, message, protocol = rednet.receive()
-    z = tonumber(message)
-    id, message, protocol = rednet.receive()
-    xFinal = tonumber(message)
-    id, message, protocol = rednet.receive()
-    yFinal = tonumber(message)
-    id, message, protocol = rednet.receive()
-    zFinal = tonumber(message)
+if not modem then
+    print("No modem found")
+    return
 end
+
+local id, message, protocol = rednet.receive()
+if message ~= "tunnel" then
+    print("Wrong message, exiting...")
+    return
+end
+local id, data = rednet.receive()
+if not data then
+    print("No data received")
+    return
+end
+x, y, z, xFinal, yFinal, zFinal = table.unpack(data)
 
 print("Turtle coordinates: " .. x .. " " .. y .. " " .. z)
 print("Final destination coordinates: " .. xFinal .. " " .. yFinal .. " " .. zFinal)
@@ -181,12 +176,14 @@ xDiff = xFinal - x
 yDiff = yFinal - y
 zDiff = zFinal - z
 if xDiff == 0 then
+    tunnelLength = math.abs(zDiff)
     if zDiff > 0 then
         direction = directionMatrix["z+"]
     else
         direction = directionMatrix["z-"]
     end
 elseif zDiff == 0 then
+    tunnelLength = math.abs(xDiff)
     if xDiff > 0 then
         direction = directionMatrix["x+"]
     else
@@ -194,7 +191,7 @@ elseif zDiff == 0 then
     end
 else
     print("Wrong coordinates, exiting...")
-    exit()
+    return
 end
 
 if tunnelLength ~= 0 then
