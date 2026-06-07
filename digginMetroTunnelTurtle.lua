@@ -19,7 +19,10 @@ local directionMatrix = {
 }
 local direction = directionMatrix["z-"];
 
-
+function turnRight()
+    turtle.turnRight()
+    direction = (direction % 4) + 1
+end
 
 function turnLeft()
     turtle.turnLeft()
@@ -141,6 +144,20 @@ function turtleDigging()
 end
 
 turtle.select(1)
+if turtle.getEquippedLeft() == nil then
+    turtle.equipLeft()
+end
+turtle.select(2)
+if turtle.getEquippedRight() == nil then
+    turtle.equipRight()
+end
+if turtle.getFuelLevel() == 0 then
+    print("No fuel, refueling...")
+    turtle.select(3)
+    turtle.refuel(64)
+end
+
+turtle.select(1)
 local modem = peripheral.find("modem", rednet.open)
 _, message, _ = rednet.receive()
 if message == "tunnel" then
@@ -178,25 +195,6 @@ elseif zDiff == 0 then
 else
     print("Wrong coordinates, exiting...")
     exit()
-end
-
-function turnRight()
-    turtle.turnRight()
-    direction = (direction % 4) + 1
-end
-
-turtle.select(1)
-if turtle.getEquippedLeft() == nil then
-    turtle.equipLeft()
-end
-turtle.select(2)
-if turtle.getEquippedRight() == nil then
-    turtle.equipRight()
-end
-if turtle.getFuelLevel() == 0 then
-    print("No fuel, refueling...")
-    turtle.select(3)
-    turtle.refuel(64)
 end
 
 if tunnelLength ~= 0 then
