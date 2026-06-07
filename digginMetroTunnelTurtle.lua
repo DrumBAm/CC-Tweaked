@@ -159,19 +159,19 @@ end
 
 turtle.select(1)
 local modem = peripheral.find("modem", rednet.open)
-_, message, _ = rednet.receive()
+id, message, protocol = rednet.receive()
 if message == "tunnel" then
-    _, message, _ = rednet.receive()
+    id, message, protocol = rednet.receive()
     x = tonumber(message)
-    _, message, _ = rednet.receive()
+    id, message, protocol = rednet.receive()
     y = tonumber(message)
-    _, message, _ = rednet.receive()
+    id, message, protocol = rednet.receive()
     z = tonumber(message)
-    _, message, _ = rednet.receive()
+    id, message, protocol = rednet.receive()
     xFinal = tonumber(message)
-    _, message, _ = rednet.receive()
+    id, message, protocol = rednet.receive()
     yFinal = tonumber(message)
-    _, message, _ = rednet.receive()
+    id, message, protocol = rednet.receive()
     zFinal = tonumber(message)
 end
 
