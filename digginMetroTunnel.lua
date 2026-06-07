@@ -7,7 +7,12 @@ else
     exit()
 end
 
-local id, message, protocol = rednet.receive()
-print(message)
-input = read()
-rednet.send(2, input)
+print("Put X coordinate of the turtle")
+rednet.send(2, read())
+print("Put Y coordinate of the turtle")
+rednet.send(2, read())
+print("Put Z coordinate of the turtle")
+rednet.send(2, read())
+
+print("Length of the tunnel?")
+rednet.send(2, read())

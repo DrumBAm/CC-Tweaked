@@ -1,16 +1,27 @@
 local tunnelCounter = 0
 local tunnelLength = 0
+local x = 0
+local y = 0
+local z = 0
 
 turtle.select(1)
 local modem = peripheral.find("modem", rednet.open)
 local id, message, protocol = rednet.receive()
 print(message)
 if message == "tunnel" then
-    rednet.send(1, "For how long?")
+    local id, message, protocol = rednet.receive()
+    x = tonumber(message)
+    local id, message, protocol = rednet.receive()
+    y = tonumber(message)
+    local id, message, protocol = rednet.receive()
+    z = tonumber(message)
+    local id, tunnelLength, protocol = rednet.receive()
+    tunnelLength = tonumber(tunnelLength)
 end
 
-local id, tunnelLength, protocol = rednet.receive()
-tunnelLength = tonumber(tunnelLength)
+print("Turtle coordinates: " .. x .. " " .. y .. " " .. z)
+print("Tunnel length: " .. tunnelLength)
+
 
 function detectAndPlaceDown()
     if not turtle.detectDown() then
@@ -34,7 +45,6 @@ function detectAndPlaceUp()
 end
 
 function turtleDigging()
-    tunnelCounter = tunnelCounter + 1
     turtle.dig()
     turtle.forward()
     detectAndPlaceDown()
@@ -48,12 +58,6 @@ function turtleDigging()
             turtle.forward()
             if i == 1 then
                 detectAndPlaceDown()
-                if j == 4 and tunnelCounter == 1 then
-                    turtle.select(6)
-                    turtle.turnRight()
-                    turtle.place()
-                    turtle.turnLeft()
-                end
             end
         end
         detectAndPlaceForward()
@@ -93,16 +97,6 @@ function turtleDigging()
         turtle.forward()
     end
     turtle.turnRight()
-
-    if tunnelCounter == 1 then
-        tunnelCounter = 0
-        turtle.select(6)
-        turtle.turnRight()
-        turtle.turnRight()
-        turtle.place()
-        turtle.turnRight()
-        turtle.turnRight()
-    end
 end
 
 turtle.select(1)
