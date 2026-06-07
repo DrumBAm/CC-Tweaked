@@ -19,50 +19,7 @@ local directionMatrix = {
 }
 local direction = directionMatrix["z-"];
 
-turtle.select(1)
-local modem = peripheral.find("modem", rednet.open)
-_, message, _ = rednet.receive()
-if message == "tunnel" then
-    _, message, _ = rednet.receive()
-    x = tonumber(message)
-    _, message, _ = rednet.receive()
-    y = tonumber(message)
-    _, message, _ = rednet.receive()
-    z = tonumber(message)
-    _, message, _ = rednet.receive()
-    xFinal = tonumber(message)
-    _, message, _ = rednet.receive()
-    yFinal = tonumber(message)
-    _, message, _ = rednet.receive()
-    zFinal = tonumber(message)
-end
 
-print("Turtle coordinates: " .. x .. " " .. y .. " " .. z)
-print("Final destination coordinates: " .. xFinal .. " " .. yFinal .. " " .. zFinal)
-xDiff = xFinal - x
-yDiff = yFinal - y
-zDiff = zFinal - z
-if xDiff == 0 then
-    if zDiff > 0 then
-        direction = directionMatrix["z+"]
-    else
-        direction = directionMatrix["z-"]
-    end
-elseif zDiff == 0 then
-    if xDiff > 0 then
-        direction = directionMatrix["x+"]
-    else
-        direction = directionMatrix["x-"]
-    end
-else
-    print("Wrong coordinates, exiting...")
-    exit()
-end
-
-function turnRight()
-    turtle.turnRight()
-    direction = (direction % 4) + 1
-end
 
 function turnLeft()
     turtle.turnLeft()
@@ -181,6 +138,51 @@ function turtleDigging()
         moveForward()
     end
     turnRight()
+end
+
+turtle.select(1)
+local modem = peripheral.find("modem", rednet.open)
+_, message, _ = rednet.receive()
+if message == "tunnel" then
+    _, message, _ = rednet.receive()
+    x = tonumber(message)
+    _, message, _ = rednet.receive()
+    y = tonumber(message)
+    _, message, _ = rednet.receive()
+    z = tonumber(message)
+    _, message, _ = rednet.receive()
+    xFinal = tonumber(message)
+    _, message, _ = rednet.receive()
+    yFinal = tonumber(message)
+    _, message, _ = rednet.receive()
+    zFinal = tonumber(message)
+end
+
+print("Turtle coordinates: " .. x .. " " .. y .. " " .. z)
+print("Final destination coordinates: " .. xFinal .. " " .. yFinal .. " " .. zFinal)
+xDiff = xFinal - x
+yDiff = yFinal - y
+zDiff = zFinal - z
+if xDiff == 0 then
+    if zDiff > 0 then
+        direction = directionMatrix["z+"]
+    else
+        direction = directionMatrix["z-"]
+    end
+elseif zDiff == 0 then
+    if xDiff > 0 then
+        direction = directionMatrix["x+"]
+    else
+        direction = directionMatrix["x-"]
+    end
+else
+    print("Wrong coordinates, exiting...")
+    exit()
+end
+
+function turnRight()
+    turtle.turnRight()
+    direction = (direction % 4) + 1
 end
 
 turtle.select(1)
