@@ -34,6 +34,7 @@ function detectAndPlaceUp()
 end
 
 function turtleDigging()
+    tunnelCounter = tunnelCounter + 1
     turtle.dig()
     turtle.forward()
     detectAndPlaceDown()
@@ -94,7 +95,6 @@ function turtleDigging()
     end
     turtle.turnRight()
 
-    tunnelCounter = tunnelCounter + 1
     if tunnelCounter == 1 then
         tunnelCounter = 0
         turtle.select(6)
