@@ -5,6 +5,12 @@ local xFinal = 0
 local yFinal = 0
 local zFinal = 0
 local modem = peripheral.find("modem", rednet.open)
+print(turtle.getEquippedLeft())
+print(turtle.getEquippedRight())
+
+for _, side in ipairs(peripheral.getNames()) do
+    print(side, peripheral.getType(side))
+end
 if modem == nil then
     print("No modem found")
     return
