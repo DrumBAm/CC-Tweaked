@@ -3,19 +3,19 @@ local tunnelLength = 0
 local x = 0
 local y = 0
 local z = 0
+local _ = nil
 
 turtle.select(1)
 local modem = peripheral.find("modem", rednet.open)
-local id, message, protocol = rednet.receive()
-print(message)
+_, message, _ = rednet.receive()
 if message == "tunnel" then
-    local id, message, protocol = rednet.receive()
+    _, message, _ = rednet.receive()
     x = tonumber(message)
-    local id, message, protocol = rednet.receive()
+    _, message, _ = rednet.receive()
     y = tonumber(message)
-    local id, message, protocol = rednet.receive()
+    _, message, _ = rednet.receive()
     z = tonumber(message)
-    local id, tunnelLength, protocol = rednet.receive()
+    _, tunnelLength, _ = rednet.receive()
     tunnelLength = tonumber(tunnelLength)
 end
 
