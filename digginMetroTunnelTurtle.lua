@@ -1,3 +1,17 @@
+local tunnelCounter = 0
+local tunnelLength = 0
+
+turtle.select(1)
+local modem = peripheral.find("modem", rednet.open)
+local id, message, protocol = rednet.receive()
+print(message)
+if message == "tunnel" then
+    rednet.send(1, "For how long?")
+end
+
+local id, tunnelLength, protocol = rednet.receive()
+tunnelLength = tonumber(tunnelLength)
+
 function detectAndPlaceDown()
     if not turtle.detectDown() then
         turtle.select(5)
@@ -98,19 +112,7 @@ if turtle.getFuelLevel() == 0 then
     turtle.select(3)
     turtle.refuel(64)
 end
-local tunnelCounter = 0
-local tunnelLength = 0
 
-turtle.select(1)
-local modem = peripheral.find("modem", rednet.open)
-local id, message, protocol = rednet.receive()
-print(message)
-if message == "tunnel" then
-    rednet.send(1, "For how long?")
-end
-
-local id, tunnelLength, protocol = rednet.receive()
-tunnelLength = tonumber(tunnelLength)
 if tunnelLength ~= 0 then
     for i = 1, tunnelLength do
         turtleDigging()
