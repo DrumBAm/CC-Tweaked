@@ -152,17 +152,13 @@ end
 
 turtle.select(1)
 
-local modem = peripheral.find("modem", rednet.open)
-print(turtle.getEquippedLeft())
-print(turtle.getEquippedRight())
-
-for _, side in ipairs(peripheral.getNames()) do
-    print(side, peripheral.getType(side))
-end
-if modem == nil then
-    print("No modem found")
+if peripheral.getType("right") == "modem" then
+    rednet.open("right")
+else
+    print("No modem on right side")
     return
 end
+print(rednet.isOpen("right"))
 
 local id, message, protocol = rednet.receive()
 if message ~= "tunnel" then

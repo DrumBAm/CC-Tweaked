@@ -4,17 +4,20 @@ local z = 0
 local xFinal = 0
 local yFinal = 0
 local zFinal = 0
-local modem = peripheral.find("modem", rednet.open)
-print(turtle.getEquippedLeft())
-print(turtle.getEquippedRight())
 
-for _, side in ipairs(peripheral.getNames()) do
-    print(side, peripheral.getType(side))
+if peripheral.getType("right") == "modem" then
+    rednet.open("right")
+else
+    print("No modem on right side")
+    return
 end
+print(rednet.isOpen("right"))
 if modem == nil then
     print("No modem found")
     return
 end
+
+
 print("Do you want to start digging?(y/n)")
 local input = read()
 if input == "y" then
