@@ -49,7 +49,6 @@ function turtleDigging()
             if i == 1 then
                 detectAndPlaceDown()
                 if j == 4 and tunnelCounter == 1 then
-                    tunnelCounter = 0
                     turtle.select(6)
                     turtle.turnRight()
                     turtle.place()
