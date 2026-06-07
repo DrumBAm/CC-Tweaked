@@ -1,5 +1,6 @@
 local tunnelCounter = 0
 local tunnelLength = 0
+local message = nil
 local x = 0
 local y = 0
 local z = 0
